@@ -113,7 +113,7 @@ async function readFiles(dirPath: string, supportedExtensions: string[]): Promis
   const fileNames: string[] = [];
   const fileContents: string[] = [];
 
-  const files = await fs.promises.readdir(dirPath, { withFileTypes: true });
+  const files = await fs.promises.readdir(dirPath, { withFileTypes: true , recursive: true});
   const readPromises = files.map(async (file) => {
     const filePath = path.join(dirPath, file.name);
     if (!file.isDirectory() && supportedExtensions.includes(path.extname(filePath))) {
